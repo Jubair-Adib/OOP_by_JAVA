@@ -1,0 +1,26 @@
+Refference: https://www.youtube.com/watch?v=MNTvxGCEvQs&list=PLvr0Ht-XkB_3QPWYBje6NqEs3QLj_0vpf
+
+1) Package/Folder
+2) Class
+3) Object/Instance, Variable/Data/Attribute , Instance V.,Local V., Static V.
+4) Method, Pass by Refference, toString, Instance method, Static Method, Method overloading, Method Overriding
+5) Non-parametrizerd Constructor/ default, Parameterized Constructor, Constructor overloading
+6) Access modifier (Public, Default, Protected, Private)
+7) Interface
+
+
+1) Encapsulation (Setter method, getter method)
+2) Inheritance (parent(super class),child(Sub class),extend,toString)
+3) Polymorphism
+    
+    i)  Compile time Polymorphism [Static Binding, Method overloading]
+    ii) Run time Polymorphism [Dynamic Binding, Method Overriding]
+    
+    upcasting, downcasting
+
+4) Abstraction
+
+
+
+
+

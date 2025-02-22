@@ -1,0 +1,77 @@
+The static keyword in Java is used to define class-level members, meaning they belong to the class itself rather than any specific instance. Here’s how you can use it:
+
+1] Static Variables (Class Variables)
+
+*) A static variable is shared across all instances of a class.
+*) It is stored in the method area (not heap memory).
+
+class Car {
+    static int wheels = 4;  // Shared by all instances
+}
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(Car.wheels);  // Access without an instance
+    }
+}
+
+2] Static Methods
+*) A static method belongs to the class, not an instance.
+*) It cannot access non-static (instance) members directly.
+
+class MathUtil {
+    static int square(int x) {
+        return x * x;
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(MathUtil.square(5));  // Access without an object
+    }
+}
+
+3] Static Blocks (Initialization Block)
+
+*) Runs once when the class is loaded.
+*) Used to initialize static variables.
+
+class Example {
+    static int num;
+    
+    static {
+        num = 10;  
+        System.out.println("Static block executed");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(Example.num);
+    }
+}
+
+4] Static Classes (Nested Classes)
+*) A static nested class (not an inner class) does not require an instance of the outer class.
+
+class Outer {
+    static class Inner {
+        void show() {
+            System.out.println("Static nested class");
+        }
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Outer.Inner obj = new Outer.Inner();
+        obj.show();
+    }
+}
+
+Key Takeaways
+
+✅ static variables → Shared across instances.
+✅ static methods → Can be called without an object.
+✅ static blocks → Execute once when the class is loaded.
+✅ static nested classes → Independent of outer class instances.

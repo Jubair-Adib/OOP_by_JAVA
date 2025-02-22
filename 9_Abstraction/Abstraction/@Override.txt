@@ -1,0 +1,101 @@
+Use of @Override in Java
+The @Override annotation is used in Java to indicate that a method overrides a method from its superclass. It helps catch errors at compile time and improves code readability.
+
+1️⃣ Basic Use of @Override
+When a subclass redefines a method from its superclass, we use @Override.
+
+java
+Copy
+Edit
+class Parent {
+    void show() {
+        System.out.println("Parent class method");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {  // Correctly overrides the method
+        System.out.println("Child class method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child c = new Child();
+        c.show();  // Output: Child class method
+    }
+}
+✅ The show() method in Child overrides show() in Parent.
+✅ @Override ensures that the method signature matches the superclass method.
+
+2️⃣ Preventing Mistakes with @Override
+Without @Override, a typo in the method signature won’t cause an error, which can lead to unexpected behavior.
+
+java
+Copy
+Edit
+class Parent {
+    void show() { }
+}
+
+class Child extends Parent {
+    // Mistake: Method name is wrong (sho() instead of show())
+    void sho() {  // No error, but doesn't override!
+        System.out.println("Incorrect method");
+    }
+}
+🔴 Problem: Java won’t warn that sho() isn’t actually overriding show().
+✅ If we had used @Override, the compiler would catch this mistake:
+
+java
+Copy
+Edit
+class Child extends Parent {
+    @Override
+    void sho() {  // ❌ Compilation error! Method does not override
+        System.out.println("Incorrect method");
+    }
+}
+✅ Fix: Use the correct method name (show()).
+
+3️⃣ @Override with Abstract Methods
+If a class extends an abstract class, it must override its abstract methods.
+
+java
+Copy
+Edit
+abstract class Animal {
+    abstract void makeSound();
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {  // Must override the abstract method
+        System.out.println("Bark! Bark!");
+    }
+}
+✅ @Override ensures that makeSound() correctly implements the abstract method.
+
+4️⃣ @Override with Interfaces
+If a class implements an interface, it must override its methods.
+
+java
+Copy
+Edit
+interface Vehicle {
+    void start();
+}
+
+class Car implements Vehicle {
+    @Override
+    public void start() {  // Correctly overrides the interface method
+        System.out.println("Car is starting...");
+    }
+}
+✅ Ensures correct method implementation from an interface.
+
+Key Takeaways
+✔ Ensures proper overriding of superclass methods.
+✔ Prevents accidental mistakes like misspelling or incorrect parameters.
+✔ Improves code readability by making it clear that a method is overriding a parent method.

@@ -1,0 +1,89 @@
+Abstract Class in Java
+An abstract class in Java is a class that cannot be instantiated and is meant to be extended by subclasses. It can have both abstract (unimplemented) and concrete (implemented) methods.
+
+1️⃣ Declaring an Abstract Class
+Use the abstract keyword.
+Can contain abstract methods (methods without a body).
+Can have regular methods with implementations.
+java
+Copy
+Edit
+abstract class Animal {
+    abstract void makeSound();  // Abstract method (no body)
+    
+    void sleep() {  // Concrete method (has a body)
+        System.out.println("Sleeping...");
+    }
+}
+2️⃣ Extending an Abstract Class
+A subclass must implement all abstract methods of the parent class.
+
+java
+Copy
+Edit
+class Dog extends Animal {
+    void makeSound() {
+        System.out.println("Bark! Bark!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.makeSound(); // Output: Bark! Bark!
+        d.sleep();     // Output: Sleeping...
+    }
+}
+✅ The Dog class implements makeSound() because it's abstract in Animal.
+✅ The sleep() method is inherited as-is.
+
+3️⃣ Abstract Class with Constructor
+Abstract classes can have constructors, which are called when a subclass object is created.
+java
+Copy
+Edit
+abstract class Vehicle {
+    Vehicle() {
+        System.out.println("Vehicle constructor called");
+    }
+}
+
+class Car extends Vehicle {
+    Car() {
+        System.out.println("Car constructor called");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car c = new Car();
+    }
+}
+Output:
+
+kotlin
+Copy
+Edit
+Vehicle constructor called
+Car constructor called
+✅ The constructor of the abstract class runs first.
+
+4️⃣ Abstract Class with Variables
+Can have instance variables, static variables, and final variables.
+java
+Copy
+Edit
+abstract class Shape {
+    int sides = 4;  // Instance variable
+    static int count = 0;  // Static variable
+    final int MAX_SIDES = 10;  // Final variable
+}
+5️⃣ Abstract Class vs Interface
+Feature	Abstract Class	Interface
+Methods	Can have both abstract and concrete methods	Only abstract methods (before Java 8)
+Variables	Can have instance, static, and final variables	Only public static final variables
+Multiple Inheritance	No, only single inheritance	Yes, a class can implement multiple interfaces
+Key Takeaways
+✔ Abstract classes are partially implemented and meant to be extended.
+✔ They cannot be instantiated directly.
+✔ Subclasses must implement abstract methods or be declared abstract themselves.

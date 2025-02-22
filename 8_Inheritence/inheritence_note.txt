@@ -1,0 +1,4 @@
+1) Parent-Child (Super-Sub)
+2) Child can use the method/variable of parent, but parent can't use the same of child.
+3) Though child can use parents method, so if child has a method named "do", and the parent has the same with name "do", then child will use the method of his own. This is called method overriding.
+

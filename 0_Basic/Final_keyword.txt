@@ -1,0 +1,43 @@
+The final keyword is used in Java (and some other languages) to declare constants, prevent method overriding, and restrict inheritance. Here’s how it works:
+
+1] Final Variables (Constants)
+
+*) When a variable is declared final, its value cannot be changed after it is initialized.
+*) Used for constants.
+
+final int MAX_SPEED = 120;  // Cannot be changed later
+
+2] Final Methods (Prevent Overriding)
+
+*) A method declared final cannot be overridden by subclasses.
+
+class Car {
+    final void run() {
+        System.out.println("Car is running");
+    }
+}
+
+class SportsCar extends Car {
+    // This would cause a compile-time error
+    // void run() { System.out.println("SportsCar is running"); }
+}
+
+3] Final Classes (Prevent Inheritance)
+
+*) A class declared final cannot be subclassed.
+
+final class Bike {
+    void run() {
+        System.out.println("Bike is running");
+    }
+}
+
+// This would cause a compile-time error
+// class SportsBike extends Bike { }
+
+
+*)KEY TAKEWAYS:
+
+final variables = constant values.
+final methods = no overriding.
+final classes = no inheritance.

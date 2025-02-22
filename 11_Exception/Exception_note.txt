@@ -1,0 +1,227 @@
+1  ArithmeticException
+2  NullPointerException
+3  StringIndexOutOfBoundsException
+4  NumberFormatException
+5  FileNotFoundException
+6  ArrayIndexOutOfBoundsException
+7  ClassNotFoundException
+8  IOException
+9  NoSuchMethodException
+10 InputMismatchException
+
+Exception Handling in Java 🚀
+Exception handling in Java is a mechanism to handle runtime errors and prevent program crashes. Java provides a robust exception handling framework using try, catch, throw, throws, and finally.
+
+1️⃣ What is an Exception?
+An exception is an event that occurs during program execution that disrupts the normal flow.
+
+For example:
+
+java
+Copy
+Edit
+int a = 10, b = 0;
+int result = a / b;  // ❌ ArithmeticException: Division by zero
+2️⃣ Types of Exceptions
+Exceptions in Java are divided into two categories:
+
+A. Checked Exceptions (Compile-time Exceptions)
+Checked at compile-time.
+Must be handled using try-catch or throws.
+Examples:
+IOException
+SQLException
+FileNotFoundException
+java
+Copy
+Edit
+import java.io.*;
+
+class Example {
+    public static void main(String[] args) {
+        try {
+            FileReader file = new FileReader("file.txt");  // ❌ FileNotFoundException
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+        }
+    }
+}
+B. Unchecked Exceptions (Runtime Exceptions)
+Checked at runtime.
+Occur due to logical errors in code.
+Examples:
+NullPointerException
+ArithmeticException
+ArrayIndexOutOfBoundsException
+java
+Copy
+Edit
+class Example {
+    public static void main(String[] args) {
+        int a = 5 / 0;  // ❌ ArithmeticException: Division by zero
+    }
+}
+C. Error (Serious System Failure)
+Errors cannot be handled in code.
+Examples:
+StackOverflowError
+OutOfMemoryError
+VirtualMachineError
+3️⃣ Exception Handling Keywords
+Java provides five keywords for handling exceptions:
+
+Keyword	Description
+try	Defines a block of code that may throw an exception.
+catch	Handles exceptions thrown in the try block.
+finally	Always executes, whether an exception occurs or not.
+throw	Used to manually throw an exception.
+throws	Declares exceptions a method might throw.
+4️⃣ Try-Catch Example
+A try block contains code that may throw an exception, and the catch block handles it.
+
+java
+Copy
+Edit
+class Example {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0;  // Risky code
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero!");
+        }
+    }
+}
+✅ Output: Cannot divide by zero!
+✅ Prevents program crash.
+
+5️⃣ Multiple Catch Blocks
+A try block can have multiple catch blocks to handle different exceptions.
+
+java
+Copy
+Edit
+class Example {
+    public static void main(String[] args) {
+        try {
+            int arr[] = {1, 2, 3};
+            System.out.println(arr[5]);  // ❌ ArrayIndexOutOfBoundsException
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception!");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Out of Bounds!");
+        }
+    }
+}
+✅ Output: Array Index Out of Bounds!
+
+6️⃣ Finally Block
+The finally block always executes, even if an exception occurs or not.
+
+java
+Copy
+Edit
+class Example {
+    public static void main(String[] args) {
+        try {
+            int data = 5 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught!");
+        } finally {
+            System.out.println("Finally block executed.");
+        }
+    }
+}
+✅ Output:
+
+php
+Copy
+Edit
+Exception caught!
+Finally block executed.
+7️⃣ Throw Keyword
+The throw keyword manually throws an exception.
+
+java
+Copy
+Edit
+class Example {
+    static void checkAge(int age) {
+        if (age < 18) {
+            throw new ArithmeticException("Not eligible to vote");
+        } else {
+            System.out.println("Eligible to vote");
+        }
+    }
+
+    public static void main(String[] args) {
+        checkAge(16);  // ❌ Throws ArithmeticException
+    }
+}
+✅ Output: Exception in thread "main" java.lang.ArithmeticException: Not eligible to vote
+
+8️⃣ Throws Keyword
+The throws keyword declares exceptions a method might throw.
+
+java
+Copy
+Edit
+import java.io.*;
+
+class Example {
+    static void readFile() throws IOException {
+        FileReader file = new FileReader("test.txt");
+    }
+
+    public static void main(String[] args) {
+        try {
+            readFile();
+        } catch (IOException e) {
+            System.out.println("File not found!");
+        }
+    }
+}
+✅ The throws keyword allows readFile() to declare an exception, and it's handled in main().
+
+9️⃣ Custom Exceptions
+You can create your own exception by extending Exception.
+
+java
+Copy
+Edit
+class MyException extends Exception {
+    MyException(String message) {
+        super(message);
+    }
+}
+
+class Example {
+    static void checkNumber(int num) throws MyException {
+        if (num < 0) {
+            throw new MyException("Negative numbers not allowed");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkNumber(-5);
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+✅ Output: Negative numbers not allowed
+
+🔟 Exception Handling Best Practices
+✅ Always catch the most specific exception first
+✅ Use meaningful exception messages
+✅ Never ignore exceptions
+✅ Use finally for resource cleanup
+✅ Avoid using exceptions for normal control flow
+
+🔥 Summary Table
+Keyword	Purpose
+try	Defines the block of code to monitor for exceptions.
+catch	Handles a specific type of exception.
+finally	Executes code regardless of exception occurrence.
+throw	Manually throws an exception.
+throws	Declares an exception in a method signature.
